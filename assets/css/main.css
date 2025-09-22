@@ -1210,7 +1210,7 @@ h1 {
 /* Sponsors Area */
 #sponsors {
   /* background: url(https://cdn.pixabay.com/photo/2015/12/08/00/26/desk-1081708_960_720.jpg) no-repeat center; */
-  background-color: #fff;
+  color: #fff;
   background-attachment: scroll;
   background-size: auto auto;
   background-size: cover;
@@ -2703,7 +2703,6 @@ section#count {
 #sponsor-heading {
   font-size: 40px;
   margin-bottom: 50px;
-  color: #000 !important;
 }
 /* Dark Theme */
 section#about {
