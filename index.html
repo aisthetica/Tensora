@@ -21,6 +21,224 @@
     <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
     <link rel="shortcut icon" type="image/jpg" href="assets/img/codecell-logo.png"/>
 
+    <style>
+      /* Timeline Styles */
+      .timeline-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      .timeline {
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 50px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease;
+      }
+
+      .timeline-item.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .timeline-item:nth-child(odd) {
+        padding-right: 50%;
+        text-align: right;
+      }
+
+      .timeline-item:nth-child(even) {
+        padding-left: 50%;
+        text-align: left;
+      }
+
+      .timeline-content {
+        position: relative;
+        padding: 30px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .timeline-content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        border-color: #667eea;
+      }
+
+      .timeline-content::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 15px solid transparent;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content::before {
+        right: -30px;
+        border-left-color: #fff;
+        transform: translateY(-50%);
+      }
+
+      .timeline-item:nth-child(even) .timeline-content::before {
+        left: -30px;
+        border-right-color: #fff;
+        transform: translateY(-50%);
+      }
+
+      .timeline-marker {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        background: #667eea;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
+        z-index: 10;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item.active .timeline-marker {
+        width: 25px;
+        height: 25px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        box-shadow: 0 0 0 6px rgba(102, 126, 234, 0.3);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% { box-shadow: 0 0 0 6px rgba(102, 126, 234, 0.3); }
+        50% { box-shadow: 0 0 0 12px rgba(102, 126, 234, 0.1); }
+        100% { box-shadow: 0 0 0 6px rgba(102, 126, 234, 0.3); }
+      }
+
+      .timeline-time {
+        display: inline-block;
+        padding: 8px 16px;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 15px;
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from { box-shadow: 0 0 5px rgba(102, 126, 234, 0.5); }
+        to { box-shadow: 0 0 20px rgba(102, 126, 234, 0.8); }
+      }
+
+      .timeline-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .timeline-subtitle {
+        color: #667eea;
+        font-weight: 600;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      .timeline-description {
+        color: #666;
+        line-height: 1.6;
+        font-size: 15px;
+      }
+
+      .timeline-status {
+        display: inline-block;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 10px;
+      }
+
+      .status-upcoming {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .status-active {
+        background: #d1fae5;
+        color: #065f46;
+      }
+
+      .status-completed {
+        background: #e5e7eb;
+        color: #374151;
+      }
+
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .timeline::before {
+          left: 20px;
+        }
+
+        .timeline-item {
+          padding-left: 50px !important;
+          padding-right: 0 !important;
+          text-align: left !important;
+        }
+
+        .timeline-content::before {
+          left: -30px !important;
+          right: auto !important;
+          border-right-color: #fff !important;
+          border-left-color: transparent !important;
+        }
+
+        .timeline-marker {
+          left: 20px !important;
+        }
+      }
+
+      .progress-bar-container {
+        position: relative;
+        height: 8px;
+        background: #e5e7eb;
+        border-radius: 4px;
+        margin: 30px 0;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border-radius: 4px;
+        width: 0%;
+        transition: width 2s ease;
+      }
+    </style>
+
   </head>
   <body>
 
@@ -344,120 +562,93 @@
     </section>
     <!-- Counter Area End-->
 
-    <!-- Schedule Section Start -->
-    <section id="schedules" class="schedule section-padding">
+    <!-- Timeline Schedule Section Start -->
+    <section id="schedules" class="section-padding">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <div class="section-title-header text-center">
-              <h2 style="margin-bottom: 20px;" class="section-title wow fadeInUp" data-wow-delay="0.2s">Event Schedule</h2>
+              <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">Event Timeline</h2>
+              <p class="wow fadeInDown" data-wow-delay="0.2s">Follow the journey from problem release to final results</p>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12 mb-5 text-center">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item">
-                <a class="nav-link active nav-width" id="monday-tab" data-toggle="tab" href="#monday" role="tab" aria-controls="monday" aria-expanded="true">
-                  <div class="item-text">
-                    <h4>Phase 1</h4>
-                    <h5>Problem Release</h5>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link nav-width" id="tuesday-tab" data-toggle="tab" href="#tuesday" role="tab" aria-controls="tuesday">
-                  <div class="item-text">
-                    <h4>Phase 2</h4>
-                    <h5>Hackathon</h5>
-                  </div>
-                </a>
-              </li>
-              <li class="nav-item nav-width">
-                <a class="nav-link" id="wednesday-tab" data-toggle="tab" href="#wednesday" role="tab" aria-controls="wednesday">
-                  <div class="item-text">
-                    <h4>Phase 3</h4>
-                    <h5>Evaluation</h5>
-                  </div>
-                </a>
-              </li>
-            </ul>
+        
+        <div class="timeline-container">
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="timelineProgress"></div>
           </div>
-          <div class="col-12">
-            <div class="schedule-area row wow fadeInDown" data-wow-delay="0.3s">
-              <div class="schedule-tab-content col-12 clearfix">
-                <div class="tab-content" id="myTabContent">
-                  <div class="tab-pane fade show active" id="monday" role="tabpanel" aria-labelledby="monday-tab">
-                    <div id="accordion">
-                      <div class="card">
-                        <div id="headingOne">
-                          <div class="schedule-slot-time">
-                            <span>Oct 8, 12 PM</span>
-                            Problem Release
-                          </div>
-                          <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                            <h4>Problem Statements Released</h4>
-                            <h5 class="name">Tensora 2K25</h5>
-                          </div>
-                        </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                          <div class="card-body">
-                            <p>Problem statements across 5 themes (Education, Transport, Healthcare, Agriculture, Sustainable Energy) will be released 6 hours before the hackathon begins. Teams can study and choose their preferred problem statement.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="tuesday" role="tabpanel" aria-labelledby="tuesday-tab">
-                    <div id="accordion2">
-                      <div class="card">
-                        <div id="headingOne1">
-                          <div class="schedule-slot-time">
-                            <span>Oct 8, 6 PM - Oct 9, 6 PM</span>
-                            24-Hour Hackathon
-                          </div>
-                          <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
-                            <h4>Innovation Marathon Begins</h4>
-                            <h5 class="name">Tensora 2K25</h5>
-                          </div>
-                        </div>
-                        <div id="collapseOne1" class="collapse show" aria-labelledby="headingOne1" data-parent="#accordion2">
-                          <div class="card-body">
-                            <p>The 24-hour hackathon begins at 6 PM on October 8th and ends at 6 PM on October 9th. Teams must develop AI-powered solutions with mandatory implementation of ML/DL/AI techniques. All submissions must be completed by the deadline.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tab-pane fade" id="wednesday" role="tabpanel" aria-labelledby="wednesday-tab">
-                    <div id="accordion3">
-                      <div class="card">
-                        <div id="headingOne3">
-                          <div class="schedule-slot-time">
-                            <span>Oct 11</span>
-                            Evaluation & Results
-                          </div>
-                          <div class="collapsed card-header" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="false" aria-controls="collapseOne3">
-                            <h4>Final Presentations & Judging</h4>
-                            <h5 class="name">Tensora 2K25</h5>
-                          </div>
-                        </div>
-                        <div id="collapseOne3" class="collapse show" aria-labelledby="headingOne3" data-parent="#accordion3">
-                          <div class="card-body">
-                            <p>Teams will present their projects to expert juries on October 10th. Each team gets 15 minutes for presentation including Q&A. Projects will be evaluated based on innovation, technical implementation, theme relevance, and presentation quality. Winners will be announced the same day.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+          
+          <div class="timeline">
+            <div class="timeline-item" data-date="2025-10-08">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-time">Oct 8, 2025 - 12:00 PM</div>
+                <div class="timeline-title">Problem Statements Release</div>
+                <div class="timeline-subtitle">Phase 1: Get Ready</div>
+                <div class="timeline-description">
+                  Problem statements across 5 innovation themes (Education, Transport, Healthcare, Agriculture, Sustainable Energy) will be released. Teams can study and choose their preferred problem statement to start planning their AI-powered solutions.
                 </div>
+                <div class="timeline-status status-upcoming" id="status-1">Upcoming</div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-date="2025-10-08">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-time">Oct 8, 2025 - 6:00 PM</div>
+                <div class="timeline-title">Hackathon Begins</div>
+                <div class="timeline-subtitle">Phase 2: Innovation Marathon Starts</div>
+                <div class="timeline-description">
+                  The 24-hour innovation marathon officially begins! Teams start developing their AI-powered solutions with mandatory implementation of ML/DL/AI techniques. Online mode begins with teams working remotely.
+                </div>
+                <div class="timeline-status status-upcoming" id="status-2">Upcoming</div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-date="2025-10-09">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-time">Oct 9, 2025 - 6:00 PM</div>
+                <div class="timeline-title">Submission Deadline</div>
+                <div class="timeline-subtitle">Phase 2: Development Complete</div>
+                <div class="timeline-description">
+                  All project submissions must be completed by this deadline. Teams must submit their GitHub repository, demo video, presentation slides, and brief technical report showcasing their AI implementation.
+                </div>
+                <div class="timeline-status status-upcoming" id="status-3">Upcoming</div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-date="2025-10-10">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-time">Oct 10, 2025 - All Day</div>
+                <div class="timeline-title">Final Presentations</div>
+                <div class="timeline-subtitle">Phase 3: Showcase & Evaluation</div>
+                <div class="timeline-description">
+                  Teams present their innovative solutions to expert judges at KLNCE campus. Each team gets 15 minutes for presentation and Q&A. Projects evaluated on innovation, technical implementation, theme relevance, and presentation quality.
+                </div>
+                <div class="timeline-status status-upcoming" id="status-4">Upcoming</div>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-date="2025-10-10">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-time">Oct 10, 2025 - Evening</div>
+                <div class="timeline-title">Results & Awards</div>
+                <div class="timeline-subtitle">Phase 3: Winners Announced</div>
+                <div class="timeline-description">
+                  After careful evaluation by our expert jury panel, winners will be announced in various categories. Cash prizes, certificates, and special recognition awards will be distributed to outstanding teams and innovative solutions.
+                </div>
+                <div class="timeline-status status-upcoming" id="status-5">Upcoming</div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Schedule Section End -->
+    <!-- Timeline Schedule Section End -->
 
     <!-- Blog Section Start -->
     <section id="domains" class="section-padding">
@@ -645,7 +836,7 @@
                <i class="lni-cup"></i>
                <h3>What are the submission requirements?</h3>
                <p>
-                Teams must submit GitHub repo, demo video, presentation, and brief report. All submissions must be completed by 6 PM on Oct 10th.
+                Teams must submit GitHub repo, demo video, presentation, and brief report. All submissions must be completed by 6 PM on Oct 9th.
                </p>
                <span class="count-number">05</span>
             </div>
@@ -704,8 +895,6 @@
     </section>
     <!-- Contact text End -->
 
-
-
     <!-- Go to Top Link -->
     <a href="#" class="back-to-top">
       <i class="lni-arrow-up"></i>
@@ -731,13 +920,121 @@
     
     <script>
       // Update countdown timer for Tensora 2K25
-      // Set the date for October 9, 2025, 12:00 PM (Problem Statement Release)
       $('#clock').countdown('2025/10/08 12:00:00', function(event) {
         var $this = $(this).html(event.strftime(''
         + '<div class="count-item-main"><h3 class="count-item">%-D</h3><h4>Days</h4></div>'
         + '<div class="count-item-main"><h3 class="count-item">%H</h3><h4>Hours</h4></div>'
         + '<div class="count-item-main"><h3 class="count-item">%M</h3><h4>Minutes</h4></div>'
         + '<div class="count-item-main"><h3 class="count-item">%S</h3><h4>Seconds</h4></div>'));
+      });
+
+      // Timeline Animation and Status Update
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set up timeline dates for status checking
+        const timelineEvents = [
+          { id: 'status-1', date: new Date('2025-10-08T12:00:00') },
+          { id: 'status-2', date: new Date('2025-10-08T18:00:00') },
+          { id: 'status-3', date: new Date('2025-10-09T18:00:00') },
+          { id: 'status-4', date: new Date('2025-10-10T09:00:00') },
+          { id: 'status-5', date: new Date('2025-10-10T18:00:00') }
+        ];
+
+        // Function to update timeline status
+        function updateTimelineStatus() {
+          const now = new Date();
+          let activeIndex = -1;
+          let completedCount = 0;
+
+          timelineEvents.forEach((event, index) => {
+            const statusElement = document.getElementById(event.id);
+            const timelineItem = statusElement.closest('.timeline-item');
+            const marker = timelineItem.querySelector('.timeline-marker');
+
+            if (now >= event.date) {
+              statusElement.textContent = 'Completed';
+              statusElement.className = 'timeline-status status-completed';
+              timelineItem.classList.add('active');
+              completedCount++;
+            } else if (activeIndex === -1 && now < event.date) {
+              // First upcoming event is considered active
+              statusElement.textContent = 'Active';
+              statusElement.className = 'timeline-status status-active';
+              timelineItem.classList.add('active');
+              activeIndex = index;
+            } else {
+              statusElement.textContent = 'Upcoming';
+              statusElement.className = 'timeline-status status-upcoming';
+            }
+          });
+
+          // Update progress bar
+          const progressPercentage = (completedCount / timelineEvents.length) * 100;
+          document.getElementById('timelineProgress').style.width = progressPercentage + '%';
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+
+        // Observe all timeline items
+        document.querySelectorAll('.timeline-item').forEach(item => {
+          observer.observe(item);
+        });
+
+        // Add click handlers for timeline items
+        document.querySelectorAll('.timeline-content').forEach(content => {
+          content.addEventListener('click', function() {
+            // Add a subtle shake animation
+            this.style.animation = 'none';
+            this.offsetHeight; // Trigger reflow
+            this.style.animation = 'shake 0.5s ease-in-out';
+            
+            setTimeout(() => {
+              this.style.animation = '';
+            }, 500);
+          });
+        });
+
+        // Initialize timeline status
+        updateTimelineStatus();
+        
+        // Update status every minute
+        setInterval(updateTimelineStatus, 60000);
+
+        // Add shake animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+          }
+        `;
+        document.head.appendChild(style);
+
+        // Auto-scroll timeline items into view with stagger effect
+        function animateTimelineItems() {
+          const items = document.querySelectorAll('.timeline-item');
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center',
+                inline: 'nearest'
+              });
+            }, index * 200);
+          });
+        }
+
+        // Optional: Uncomment to auto-scroll through timeline items
+        // setTimeout(animateTimelineItems, 2000);
       });
     </script>
 
