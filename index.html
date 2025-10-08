@@ -72,7 +72,7 @@
       .timeline-content {
         position: relative;
         padding: 30px;
-        background: #fff;
+        background: #1c1c1c;
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         border: 2px solid transparent;
@@ -156,7 +156,7 @@
       .timeline-title {
         font-size: 1.5rem;
         font-weight: bold;
-        color: #333;
+        color: #f5f5f5;
         margin-bottom: 10px;
       }
 
@@ -237,6 +237,271 @@
         width: 0%;
         transition: width 2s ease;
       }
+
+      /* Problem Statements Button Styles */
+      .btn-problem-statements {
+        position: relative;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px 35px;
+        font-size: 18px;
+        font-weight: 700;
+        border: none;
+        border-radius: 50px;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        transition: all 0.3s ease;
+        animation: buttonPulse 2s infinite;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .btn-problem-statements:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        color: white;
+        text-decoration: none;
+      }
+
+      .btn-problem-statements::before {
+        content: '🔥';
+        margin-right: 10px;
+        font-size: 20px;
+        animation: fire 1.5s infinite;
+      }
+
+      @keyframes buttonPulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes fire {
+        0%, 100% {
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.2) rotate(10deg);
+        }
+      }
+
+      /* Problem Statements Section - Dark Theme */
+      .problem-statements-section {
+        background:transparent;
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .problem-statements-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.1) 0%, transparent 50%);
+      }
+
+      .problem-theme-card {
+        background: #16213e;
+        border-radius: 20px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(102, 126, 234, 0.2);
+      }
+
+      .problem-theme-card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+        transform: rotate(45deg);
+        transition: all 0.6s ease;
+      }
+
+      .problem-theme-card:hover::before {
+        top: -100%;
+        right: -100%;
+      }
+
+      .problem-theme-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 60px rgba(102, 126, 234, 0.3);
+        border-color: rgba(102, 126, 234, 0.5);
+      }
+
+      .theme-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #667eea;
+      }
+
+      .theme-icon {
+        font-size: 48px;
+        margin-right: 20px;
+      }
+
+      .theme-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0;
+      }
+
+      .problem-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .problem-item {
+        padding: 20px;
+        margin-bottom: 15px;
+        background: #0f1624;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .problem-item:hover {
+        transform: translateX(10px);
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-left-color: white;
+      }
+
+      .problem-item::after {
+        content: '→';
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        color: white;
+        font-size: 20px;
+      }
+
+      .problem-item:hover::after {
+        opacity: 1;
+        right: 15px;
+      }
+
+      .problem-number {
+        display: inline-block;
+        width: 35px;
+        height: 35px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 35px;
+        font-weight: 700;
+        margin-right: 15px;
+        font-size: 16px;
+      }
+
+      .problem-item:hover .problem-number {
+        background: white;
+        color: #667eea;
+      }
+
+      .problem-title {
+        color: #e0e0e0;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: inline;
+      }
+
+      .problem-item:hover .problem-title {
+        color: white;
+      }
+
+      .problem-description {
+        color: #ffffff;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-top: 10px;
+        display: none;
+      }
+
+      .problem-item.expanded .problem-description {
+        display: block;
+      }
+
+      .download-section {
+        text-align: center;
+        margin-top: 50px;
+        padding: 40px;
+        background: rgba(102, 126, 234, 0.1);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(102, 126, 234, 0.3);
+      }
+
+      .download-btn {
+        display: inline-block;
+        padding: 18px 45px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 18px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+      }
+
+      .download-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        color: white;
+        text-decoration: none;
+      }
+
+      .download-btn::before {
+        content: '📥 ';
+        font-size: 22px;
+      }
+
+      /* Notification Badge */
+      .notification-badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        background: #ff4757;
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 700;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
     </style>
 
   </head>
@@ -262,6 +527,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="#about">
                   About
+                </a>
+              </li>
+              <li class="nav-item" style="position: relative;">
+                <a class="nav-link" href="#problem-statements">
+                  Problem Statements
+                  <span class="notification-badge">NEW</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -311,11 +582,14 @@
                     <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8Stt2AQm0_teCVZfW-l_rcTfmtsl8WnFtnBG5pqrdkIEWrg/viewform?usp=header" id="hero-register" class="btn btn-common">Register Now!</a>
                   </div>
                   <div class="banner-btn">
+                    <a href="#problem-statements" class="btn btn-problem-statements">Problem Statements</a>
+                  </div>
+                  <div class="banner-btn">
                     <a href="https://drive.google.com/file/d/1YOQoBl0HyIOe20EU9u8g0QzUILXq8Svs/view?usp=drive_link" id="hero-register" class="btn btn-common">Rule Book</a>
                   </div>
                 </div>
                 
-                <p class="banner-info">Problem statements release on Oct 8, 12 PM.<br>Registration deadline approaching...</p>
+                <p class="banner-info">Problem statements released on Oct 8, 12 PM.<br>Registration deadline approaching...</p>
               </div>
             </div>
           </div>
@@ -387,6 +661,249 @@
     </section>
     <!-- About Section End -->
 
+    <!-- Problem Statements Section Start -->
+    <section id="problem-statements" class="problem-statements-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="section-title-header text-center">
+              <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s" style="color: white;">Problem Statements</h2>
+              <p class="wow fadeInDown" data-wow-delay="0.2s" style="color: rgba(255,255,255,0.9);">Choose from 5 themes with 4 challenging problem statements each</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <!-- Transport Theme -->
+          <div class="col-lg-12 col-md-12">
+            <div class="problem-theme-card wow fadeInUp" data-wow-delay="0.2s">
+              <div class="theme-header">
+                <div class="theme-icon">🚗</div>
+                <h3 class="theme-title">Transport</h3>
+              </div>
+              <ul class="problem-list">
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">1</span>
+                  <span class="problem-title">AI-Based Predictive Maintenance of Metro Compressor Units</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> The compressors in metro trains are critical components, and their unexpected failure can cause significant service disruptions, costly repairs, and potential safety risks. Manual or time-based maintenance often leads to either premature component replacement or a complete breakdown.<br><br>
+                    <strong>Solution:</strong> Develop an AI-driven predictive maintenance system using multivariate sensor data (e.g., pressure, temperature, vibration) from compressor units. The model will learn normal operational patterns and predict the Remaining Useful Life (RUL) of components, enabling maintenance to be scheduled proactively before a failure occurs.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">2</span>
+                  <span class="problem-title">Car Driver Distraction AI</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Driver distraction—caused by mobile phone use, drowsiness, or inattention—is one of the leading causes of road accidents worldwide. Current monitoring systems either fail to detect subtle distractions or react too late, increasing the risk of collisions and fatalities.<br><br>
+                    <strong>Solution:</strong> Develop an AI-powered system that uses computer vision and deep learning to analyze the driver's facial expressions, eye movements, and head position through an in-car camera. The model will identify signs of distraction or drowsiness and issue real-time alerts or corrective actions.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">3</span>
+                  <span class="problem-title">Flight Schedule Optimization at Congested Airports</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Heavily congested airports like Mumbai and Delhi frequently experience delays due to inefficient scheduling, runway constraints, and cascading disruptions from a single delayed flight. This impacts airlines, passengers, and overall operational efficiency.<br><br>
+                    <strong>Solution:</strong> Build an AI model to optimize flight schedules based on historical flight data. The model will analyze peak-time delays and runway capacity to identify optimal takeoff/landing times and minimize disruptions, with an NLP interface for human decision-making.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">4</span>
+                  <span class="problem-title">Human-Wildlife Conflict Mitigation on Railway Tracks</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Train-animal collisions, especially with elephants in forested areas of India, result in fatal accidents for wildlife, train damage, and trauma for railway staff. Current mitigation methods are often insufficient and reactive.<br><br>
+                    <strong>Solution:</strong> Create an AI-based system that uses sensors and/or cameras along railway tracks to detect the presence of wildlife. The system will alert train operators in real-time, allowing them to slow down or stop the train and prevent a collision.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Education Theme -->
+          <div class="col-lg-12 col-md-12">
+            <div class="problem-theme-card wow fadeInUp" data-wow-delay="0.3s">
+              <div class="theme-header">
+                <div class="theme-icon">🎓</div>
+                <h3 class="theme-title">Education</h3>
+              </div>
+              <ul class="problem-list">
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">1</span>
+                  <span class="problem-title">CodeAI – AI-Powered Interactive DSA Tutor</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Students struggle to grasp complex data structures and algorithms (DSA) concepts through static textbooks. They need a personalized, interactive, and visual learning tool that explains solutions and provides dynamic feedback.<br><br>
+                    <strong>Solution:</strong> Develop an AI system that provides step-by-step textual solutions, interactive code visualizations, and a Q&A interface for DSA problems. The system will demonstrate how algorithms work on a given input and allow users to ask questions about specific steps or request alternative approaches.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">2</span>
+                  <span class="problem-title">LangPairAI – AI for Contextual Language Translation</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Generic translation tools often fail to capture the nuances, idioms, and context-specific usage of a second language, which is a major barrier for language learners.<br><br>
+                    <strong>Solution:</strong> Build an AI system that generates contextual translations, usage examples, and practice exercises for sentences and paragraphs. The system will provide feedback on errors, helping learners understand not just what a word means, but how it is used in different situations.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">3</span>
+                  <span class="problem-title">GestureLearnAI – Vision-Based Sign & Gesture Tutoring</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Hearing-impaired students face significant communication barriers in mainstream classrooms, as there is a lack of real-time translation tools for sign language.<br><br>
+                    <strong>Solution:</strong> Create an AI system that uses computer vision to recognize sign language gestures in real time and translate them into spoken or written text for teachers and peers. Conversely, it will translate teacher speech into animated signs or subtitles, enabling seamless two-way communication.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">4</span>
+                  <span class="problem-title">AI-Powered OMR Sheet Evaluation System</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Manually checking filled OMR (Optical Mark Recognition) sheets is a time-consuming and error-prone process. Teachers and students need a fast and accurate way to evaluate these sheets and get instant feedback.<br><br>
+                    <strong>Solution:</strong> Develop a mobile-based AI system that can instantly evaluate a filled OMR sheet from a smartphone photo. The system will automatically detect and align the sheet, identify filled bubbles, calculate marks against a provided answer key, and provide real-time analysis such as per-section performance.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Agriculture Theme -->
+          <div class="col-lg-12 col-md-12">
+            <div class="problem-theme-card wow fadeInUp" data-wow-delay="0.4s">
+              <div class="theme-header">
+                <div class="theme-icon">🌾</div>
+                <h3 class="theme-title">Agriculture</h3>
+              </div>
+              <ul class="problem-list">
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">1</span>
+                  <span class="problem-title">AI-Powered Crop Disease Detection</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Crop diseases are a major cause of reduced yield and financial loss for farmers. Manual inspection is slow and often happens too late to prevent the disease from spreading.<br><br>
+                    <strong>Solution:</strong> Develop an AI system that can accurately detect and classify crop diseases from images of leaves, stems, or fruits taken with a smartphone or drone. The system will also estimate disease severity and provide recommendations for treatment or prevention.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">2</span>
+                  <span class="problem-title">AI-Powered Soil Health Analysis & Crop Recommendation</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Farmers often lack precise data-driven insights into their soil's health, leading to inefficient crop selection and fertilizer use. Poor soil conditions can drastically reduce yield.<br><br>
+                    <strong>Solution:</strong> Build an AI system that analyzes soil data (from sensors, images, or lab results) to assess its health (e.g., nutrients, pH). The system will then recommend the most suitable crops for optimal yield and suggest soil improvement measures.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">3</span>
+                  <span class="problem-title">DairyAI – Milk Quality & Yield Prediction</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Dairy farmers need to efficiently monitor milk production and quality to ensure profitability and animal health. Unexpected drops in yield or quality can indicate underlying health issues.<br><br>
+                    <strong>Solution:</strong> Create an AI system that predicts daily milk yield and detects quality issues based on data about cow health, feed intake, and environmental factors. The model will provide alerts for potential health issues that could affect production.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">4</span>
+                  <span class="problem-title">AI-Powered Weed Mapping Using Satellite Images</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Weeds compete with crops for resources, significantly reducing yield. Mapping weed-infested areas across large farmlands is difficult and labor-intensive with traditional methods.<br><br>
+                    <strong>Solution:</strong> Develop an AI system that analyzes satellite images of farmland to detect and map the distribution of weeds. This enables farmers to perform precision weed management, such as targeted herbicide application, which saves costs and reduces environmental impact.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Healthcare Theme -->
+          <div class="col-lg-12 col-md-12">
+            <div class="problem-theme-card wow fadeInUp" data-wow-delay="0.5s">
+              <div class="theme-header">
+                <div class="theme-icon">❤️</div>
+                <h3 class="theme-title">Healthcare</h3>
+              </div>
+              <ul class="problem-list">
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">1</span>
+                  <span class="problem-title">Prescription Risk Analysis System</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> The risk of drug-drug interactions and dosage errors is a significant concern in healthcare, which can lead to adverse patient outcomes and medical complications.<br><br>
+                    <strong>Solution:</strong> Develop an AI-powered system that parses textual prescription inputs to identify medications and dosages. The system will then leverage medical datasets to detect potential interactions and contraindications, assigning a severity score and providing a detailed analysis report for medical review.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">2</span>
+                  <span class="problem-title">Intelligent Radiology Anomaly Detection</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Radiologists are often overloaded with a large volume of medical images (X-rays, CT scans, MRIs). Manually analyzing each image for subtle anomalies is time-consuming and can lead to missed diagnoses.<br><br>
+                    <strong>Solution:</strong> Create an AI-based solution that analyzes medical images to automatically detect and classify anomalies. The system will localize abnormalities and generate a structured output indicating the anomaly type and its location, acting as a supportive tool for radiologists to prioritize critical cases.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">3</span>
+                  <span class="problem-title">NutritionAI – Personalized Diet Recommendation</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Diet recommendations are often generic and do not account for an individual's unique health metrics, lifestyle, and medical conditions, which can be ineffective or even harmful.<br><br>
+                    <strong>Solution:</strong> Build an AI system that takes a user's health data and lifestyle factors as input to recommend personalized diet plans. The system will generate tailored nutrient intake suggestions and provide explanations for each recommendation, helping users make informed dietary choices.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">4</span>
+                  <span class="problem-title">AI-Based Early Detection of Parkinson's Disease</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Parkinson's Disease (PD) is a progressive neurodegenerative disorder, and early detection is critical for effective management. Traditional diagnosis can be subjective and time-consuming.<br><br>
+                    <strong>Solution:</strong> Develop an AI system that can detect early signs of Parkinson's Disease from accessible data sources such as voice recordings (speech analysis), handwriting samples (micrographia detection), or motion patterns from wearable sensors. This non-invasive system can assist in timely diagnosis and treatment.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sustainable Energy & Safety Theme -->
+          <div class="col-lg-12 col-md-12">
+            <div class="problem-theme-card wow fadeInUp" data-wow-delay="0.6s">
+              <div class="theme-header">
+                <div class="theme-icon">⚡</div>
+                <h3 class="theme-title">Sustainable Energy & Safety</h3>
+              </div>
+              <ul class="problem-list">
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">1</span>
+                  <span class="problem-title">Renewable Energy Forecasting</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> The variable nature of renewable energy sources like solar and wind makes it difficult to manage and integrate them into the power grid. Accurate forecasting is essential for grid stability and optimizing energy distribution.<br><br>
+                    <strong>Solution:</strong> Build an AI model that predicts solar or wind energy generation. The model will use real-time weather data (e.g., cloud cover, wind speed) and geographic information to provide accurate and timely forecasts, helping grid operators better manage the supply and demand of renewable energy.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">2</span>
+                  <span class="problem-title">Industrial Carbon Emissions Tracking & Optimization</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Industries are under increasing pressure to reduce their carbon footprint, but they often lack a comprehensive way to track and measure emissions across their entire operation. This makes it difficult to identify emission hotspots and set effective reduction targets.<br><br>
+                    <strong>Solution:</strong> Create an integrated digital solution that tracks, calculates, and visualizes carbon emissions in real time. The system will analyze data from raw material sourcing, production, and logistics to identify emission hotspots, automate compliance reporting, and provide actionable insights for achieving carbon reduction goals.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">3</span>
+                  <span class="problem-title">AI-Based Worker Safety Monitoring</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Industrial and construction sites are high-risk environments where manual safety supervision is often insufficient and cannot prevent all accidents from unsafe behavior or environmental hazards.<br><br>
+                    <strong>Solution:</strong> Develop an AI system that uses cameras and sensors to monitor worker safety in real time. The system will detect unsafe behaviors (e.g., not wearing a helmet), identify environmental hazards (e.g., gas leaks), and trigger immediate alerts to prevent accidents.
+                  </div>
+                </li>
+                <li class="problem-item" onclick="this.classList.toggle('expanded')">
+                  <span class="problem-number">4</span>
+                  <span class="problem-title">GridWise – Smart Energy Consumption Optimizer</span>
+                  <div class="problem-description">
+                    <strong>Problem:</strong> Households and industries often consume energy inefficiently during peak hours, which leads to higher electricity costs and places a strain on the power grid.<br><br>
+                    <strong>Solution:</strong> Create an AI tool that analyzes energy consumption patterns and recommends optimal usage schedules to reduce peak loads and costs. The system will identify peak consumption periods and suggest load-shifting strategies, such as running appliances at off-peak hours, to help users save money and promote a more stable grid.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section wow fadeInUp" data-wow-delay="0.7s">
+          <h3 style="color: white; font-size: 32px; margin-bottom: 20px;">Get Complete Problem Statements</h3>
+          <p style="color: rgba(255,255,255,0.9); font-size: 18px; margin-bottom: 30px;">Download the detailed problem statement document with requirements, evaluation criteria, and submission guidelines</p>
+          <a href="https://drive.google.com/file/d/1Pe7kI6m6xoZmFLgezIWVzE5CVbnSonK6/view?usp=sharing" class="download-btn" target="_blank">Download Problem Statements PDF</a>
+        </div>
+      </div>
+    </section>
+    <!-- Problem Statements Section End -->
     <!-- Video Section Start -->
     <div class="ready-to-play">
       <video id="bgvid" class="stop" loop>
